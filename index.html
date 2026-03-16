@@ -233,11 +233,9 @@
             <h3>Simpan Tarikh</h3>
             <div class="modal-buttons">
                 <!-- Google Calendar: opens pre-filled event in browser -->
-                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Majlis+Perkahwinan+Syahir+%26+Huda&dates=20260626T030000Z/20260626T080000Z&details=Majlis+Walimatul+Urus+Muhammad+Syahir+Aqil+%26+Nur+Huda+Hidayah&location=Selayang+Capitol+Complex"
-                    target="_blank" class="modal-btn">Google Calendar</a>
-                <!-- Apple Calendar: downloads .ics file, works on iPhone / Mac -->
-                <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0APRODID:-//Wedding//EN%0ABEGIN:VEVENT%0ADTSTART:20260626T030000Z%0ADTEND:20260626T080000Z%0ASUMMARY:Majlis%20Perkahwinan%20Syahir%20%26%20Huda%0ADESCRIPTION:Majlis%20Walimatul%20Urus%20Muhammad%20Syahir%20Aqil%20%26%20Nur%20Huda%20Hidayah%0ALOCATION:Selayang%20Capitol%20Complex%0AEND:VEVENT%0AEND:VCALENDAR"
-                    download="wedding-syahir-huda.ics" class="modal-btn">Apple Calendar</a>
+                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Majlis+Perkahwinan+Syahir+%26+Huda&dates=20260626T030000Z/20260626T080000Z&details=Majlis+Walimatul+Urus+Muhammad+Syahir+Aqil+%26+Nur+Huda+Hidayah&location=Selayang+Capitol+Complex" target="_blank" class="modal-btn">Google Calendar</a>
+                <!-- Apple Calendar: uses JS Blob to avoid GitHub Pages CSP blocking data: URIs -->
+                <a href="#" onclick="downloadICS(); return false;" class="modal-btn">Apple Calendar</a>
             </div>
 
         </div>

@@ -139,4 +139,31 @@ document.addEventListener('DOMContentLoaded', () => {
             event.target.classList.remove('show');
         }
     });
+
+    // Apple Calendar: generate .ics download via Blob (avoids GitHub Pages CSP blocking data: URIs)
+    window.downloadICS = function() {
+        var icsContent = [
+            'BEGIN:VCALENDAR',
+            'VERSION:2.0',
+            'PRODID:-//Wedding//EN',
+            'BEGIN:VEVENT',
+            'DTSTART:20260626T030000Z',
+            'DTEND:20260626T080000Z',
+            'SUMMARY:Majlis Perkahwinan Syahir & Huda',
+            'DESCRIPTION:Majlis Walimatul Urus Muhammad Syahir Aqil & Nur Huda Hidayah',
+            'LOCATION:Selayang Capitol Complex',
+            'END:VEVENT',
+            'END:VCALENDAR'
+        ].join('\r\n');
+
+        var blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'wedding-syahir-huda.ics';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    };
 });
