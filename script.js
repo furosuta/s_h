@@ -36,6 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Reveal main content
             setTimeout(() => {
                 mainContent.style.opacity = '1';
+                const fab = document.getElementById('floating-app-bar');
+                if (fab) {
+                    fab.classList.add('show');
+                }
             }, 500);
 
             // Enable scrolling and remove door overlay after animation
@@ -112,5 +116,27 @@ document.addEventListener('DOMContentLoaded', () => {
             delay: 2500,
             disableOnInteraction: false,
         },
+    });
+
+    // Modal Functions
+    window.openModal = function(modalId) {
+        const modal = document.getElementById(modalId);
+        if(modal) {
+            modal.classList.add('show');
+        }
+    }
+
+    window.closeModal = function(modalId) {
+        const modal = document.getElementById(modalId);
+        if(modal) {
+            modal.classList.remove('show');
+        }
+    }
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.classList.remove('show');
+        }
     });
 });
